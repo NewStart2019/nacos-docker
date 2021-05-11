@@ -3,8 +3,20 @@ services:
   nacos:
     image: nacos/nacos-server:${NACOS_VERSION}
     container_name: nacos-standalone-mysql
-    env_file:
-      - ../env/nacos-standlone-mysql.env
+    environment:
+      PREFER_HOST_MODE: hostname
+      MODE: standalone
+      JVM_XMS: 100m
+      JVM_XMX: 100m
+      JVM_XMN: 80m
+      JVM_MS: 80m
+      JVM_MMS: 80m
+      SPRING_DATASOURCE_PLATFORM: mysql
+      MYSQL_SERVICE_HOST: mysql8
+      MYSQL_SERVICE_DB_NAME: nacos_devtest
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_USER: nacos
+      MYSQL_SERVICE_PASSWORD: nacos
     volumes:
       - ./standalone-logs/:/home/nacos/logs
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
@@ -12,17 +24,4 @@ services:
       - "8848:8848"
       - "9848:9848"
       - "9555:9555"
-    depends_on:
-      - mysql
     restart: always
-  mysql:
-    container_name: mysql
-    image: nacos/nacos-mysql:8.0.16
-    env_file:
-      - ../env/mysql.env
-    volumes:
-      - ./mysql:/var/lib/mysql
-    ports:
-      - "3306:3306"
-
-
