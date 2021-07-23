@@ -1,0 +1,30 @@
+version: '3'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zk_2
+    ports:
+      - "2182:2181"
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    volumes:
+      - /root/kafaka/localtime:/etc/localtime
+    ports:
+      - 9092:9092
+    environment:
+      ## 宿主机IP
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zk_2:2182
+      KAFKA_ADVERTISED_PORT: 9092
+    restart: always
+
+  kafka-manager:
+    image: sheepkiller/kafka-manager
+    container_name: kafka_manager
+    # zookeeper地址
+    environment:
+      ZK_HOSTS:  localhost
+    # 宿主机port:container_port
+    ports:
+      - 9001:9000

@@ -7,6 +7,6 @@ services:
         ports:
             - 2181:2181
             - 2888:2888
-            - 2888:2888
+            - 3888:3888
         volumes:
             - ./data:/data

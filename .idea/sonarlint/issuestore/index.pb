@@ -27,3 +27,22 @@ Q
 !example/standalone-mysql-5.7.yaml,e\3\e33ae23ba1ab560c0eeade0893a136a222213d15
 M
 env/nacos-standlone-mysql.env,0\5\056848d82bb11c10a97c056600f159d4c7f8b0f5
+C
+mysql/mysql5.7.yaml,5\4\547252d516b753e530e35a21f734ddba03668d11
+:
+
+redis.yaml,4\2\4249da129c896d317bd59615919c8604817390aa
+=
+env/mysql.env,9\0\90389d2aa99cc8bf3e4a4d05d537d80b01a4d9e8
+O
+example/standalone-mysql-8.yaml,0\0\00cdc0307934ecc4fdfeaa344c495087255bff30
+M
+mysql/mysql-master-slave.yaml,6\1\61b529bbd28cd96c04f9b3a88e6289f73584dcbf
+A
+mysql/mysql8.yaml,e\d\ed5687daac2e24af620bc4463944dd3a06e50d12
+I
+zk/zookeeper-cluster.yaml,f\2\f29cad5a24348d6339c23636fb5d6eae24758f89
+L
+zk/zookeeper-standclone.yaml,d\e\de90b7374cc414e8639c8ec5829a5b6e9a5f4149
+B
+kafaka/kafaka.yaml,9\6\964f116438c2310499fcef5157c33b1c249a8638
