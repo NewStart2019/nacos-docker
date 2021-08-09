@@ -8,15 +8,18 @@ services:
   kafka:
     image: wurstmeister/kafka
     container_name: kafka
+    # ./docker.sock:/var/run/docker.sock是一个很重要的参数，使得再容器内可以使用docker ps、docker port等命令，得到的结果和在宿主机上执行的是一样的
     volumes:
       - /root/kafaka/localtime:/etc/localtime
+      - /root/kafaka/docker.sock:/var/run/docker.sock
     ports:
       - 9092:9092
     environment:
       ## 宿主机IP
-      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_HOST_NAME: 8.140.113.225
       KAFKA_ZOOKEEPER_CONNECT: zk_2:2182
       KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_HEAP_OPTS: "-Xmx256M -Xms128M"
     restart: always
 
   kafka-manager:
@@ -24,7 +27,8 @@ services:
     container_name: kafka_manager
     # zookeeper地址
     environment:
-      ZK_HOSTS:  localhost
+      ZK_HOSTS:  8.140.113.225
     # 宿主机port:container_port
     ports:
       - 9001:9000
+    restart: always
