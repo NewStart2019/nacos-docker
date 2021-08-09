@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    privileged: true
+    restart: always
+    ports:
+      - 9090:9000
+      - 9001:9001
+    volumes:
+      - /root/minio/data:/data
+      - /root/minio/config:/root/.minio
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio@321
+      上面的失败
+    # 命令安装
+    docker run -p 9090:9000 -p 9001:9001 --name minio \
+    -v /mydata/minio/data:/data \
+    -e MINIO_ROOT_USER=minioadmin \
+    -e MINIO_ROOT_PASSWORD=minioadmin \
+    -d minio/minio server /data --console-address ":9001"
