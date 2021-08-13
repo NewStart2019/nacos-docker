@@ -46,3 +46,8 @@ L
 zk/zookeeper-standclone.yaml,d\e\de90b7374cc414e8639c8ec5829a5b6e9a5f4149
 B
 kafaka/kafaka.yaml,9\6\964f116438c2310499fcef5157c33b1c249a8638
+:
+
+minio.yaml,b\0\b08a96734d62d7b2b3435eccac4a0d995c02e3ae
+I
+kafaka/kafka-compose.yaml,b\6\b685aac702e94c754c0bc9c958516bce220304b6

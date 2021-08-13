@@ -14,11 +14,14 @@ services:
       - /root/kafaka/docker.sock:/var/run/docker.sock
     ports:
       - 9092:9092
+    depends_on:
+      - zk_2
     environment:
       ## 宿主机IP
-      KAFKA_ADVERTISED_HOST_NAME: 8.140.113.225
+      KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zk_2:2182
       KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 36000
       KAFKA_HEAP_OPTS: "-Xmx256M -Xms128M"
     restart: always
 
