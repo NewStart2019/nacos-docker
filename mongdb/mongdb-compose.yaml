@@ -13,8 +13,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       # 挂载数据目录
-      - /root/mongodb/mongo1/db:/data/db
-      - /root/mongodb/configdb:/data/configdb
+      - /root/mongodb/db:/data/db
       # 挂载日志目录
       - /root/mongodb/log:/var/log/mongodb
       # 挂载配置目录

@@ -9,5 +9,9 @@ services:
             - 6379:6379
         command:
             -- requirepass "rollinrockz"
+            -- bind "0.0.0.0"
+            # 默认yes，开启保护模式，限制为本地访问
+            -- protected-mode "no"
         volumes:
-            - ./data:/data
+            - /data/redis:/data
+#            - /data/redis/redis.conf:/usr/local/etc/redis/redis.conf

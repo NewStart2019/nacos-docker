@@ -44,10 +44,18 @@ I
 zk/zookeeper-cluster.yaml,f\2\f29cad5a24348d6339c23636fb5d6eae24758f89
 L
 zk/zookeeper-standclone.yaml,d\e\de90b7374cc414e8639c8ec5829a5b6e9a5f4149
-B
-kafaka/kafaka.yaml,9\6\964f116438c2310499fcef5157c33b1c249a8638
 :
 
 minio.yaml,b\0\b08a96734d62d7b2b3435eccac4a0d995c02e3ae
 I
 kafaka/kafka-compose.yaml,b\6\b685aac702e94c754c0bc9c958516bce220304b6
+J
+mongdb/mongdb-compose.yaml,3\c\3ccfc6533823f5df4097af7501ae4afe2f3055ef
+A
+mongdb/mongo.conf,c\0\c075b06929dd33995c0b74cce8cc8e1f445c17b0
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+A
+kafaka/kafka.yaml,5\8\58f2c503f25942e7237382c8234b81bd059924e1
+J
+mysql/no-nacos-mysql8.yaml,1\7\171b3bf32b86b789061cdabea394192719824d7e

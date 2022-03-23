@@ -13,10 +13,10 @@ services:
       JVM_MS: 80m
       JVM_MMS: 80m
       SPRING_DATASOURCE_PLATFORM: mysql
-      MYSQL_SERVICE_HOST: mysql8
+      MYSQL_SERVICE_HOST: 124.221.109.245
       # mysql 需要有一个nacos 数据库
       MYSQL_SERVICE_DB_NAME: nacos_devtest
-      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_PORT: 3308
       MYSQL_SERVICE_USER: nacos
       MYSQL_SERVICE_PASSWORD: nacos
     volumes:

@@ -30,7 +30,10 @@ services:
     container_name: kafka_manager
     # zookeeper地址
     environment:
-      ZK_HOSTS:  8.140.113.225
+      ZK_HOSTS: 124.221.109.245
+      KAFKA_MANAGER_AUTH_ENABLED: "true"
+      KAFKA_MANAGER_USERNAME: "admin"
+      KAFKA_MANAGER_PASSWORD: "admin"
     # 宿主机port:container_port
     ports:
       - 9001:9000
