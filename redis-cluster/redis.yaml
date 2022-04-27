@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+    redis-master:
+        image: redis:latest
+        container_name: redis-master
+        privileged: true
+        restart: always
+        ports:
+            - 6379:6379
+        command:
+            -- requirepass "rollinrockz"
+            -- bind 0.0.0.0
+            -- protected-mode no
+        volumes:
+            - /data/redis-master:/data
+#            - /data/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    redis-slave-1:
+        image: redis:latest
+        container_name: redis-slave-1
+        privileged: true
+        restart: always
+        ports:
+            - 6380:6379
+        command:
+            -- replicaof 124.221.109.245 6379
+            -- masterauth "rollinrockz"
+            -- requirepass "rollinrockz"
+            -- bind 0.0.0.0
+            -- protected-mode no
+        volumes:
+            - /data/redis-salve-1:/data
