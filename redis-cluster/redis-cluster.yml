@@ -13,7 +13,9 @@ services:
   ports:
     - '7001:6379'     #服务端口
     - '17001:16379'   #集群端口
-  command: 
+  command:
+    # 开启集群模式
+    -- cluster-enabled yes
     -- requirepass "rollinrockz"
     -- masterauth "rollinrockz"
     -- bind 0.0.0.0
@@ -23,7 +25,7 @@ services:
   
 
  redis2:
-  image: redis:5.0.3
+  image: redis
   #network_mode: host
   restart: always
   volumes:
@@ -36,6 +38,7 @@ services:
     - '7002:6379'     #服务端口
     - '17002:16379'   #集群端口
   command: 
+    -- cluster-enabled yes
     -- requirepass "rollinrockz"
     -- masterauth "rollinrockz"
     -- bind 0.0.0.0
@@ -57,6 +60,7 @@ services:
     - '7003:6379'     #服务端口
     - '17003:16379'   #集群端口
   command: 
+    -- cluster-enabled yes
     -- requirepass "rollinrockz"
     -- masterauth "rollinrockz"
     -- bind 0.0.0.0
@@ -65,7 +69,7 @@ services:
   privileged: true    #环境变量
 
  redis4:
-  image: redis:5.0.3
+  image: redis
   #network_mode: host
   restart: always
   volumes:
@@ -78,6 +82,7 @@ services:
     - '7004:6379'     #服务端口
     - '17004:16379'   #集群端口
   command: 
+    -- cluster-enabled yes
     -- requirepass "rollinrockz"
     -- masterauth "rollinrockz"
     -- bind 0.0.0.0
@@ -86,7 +91,7 @@ services:
   privileged: true    #环境变量
 
  redis5:
-  image: redis:5.0.3
+  image: redis
   #network_mode: host
   restart: always
   volumes:
@@ -99,6 +104,7 @@ services:
     - '7005:6379'     #服务端口
     - '17005:16379'   #集群端口
   command: 
+    -- cluster-enabled yes
     -- requirepass "rollinrockz"
     -- masterauth "rollinrockz"
     -- bind 0.0.0.0
@@ -107,7 +113,7 @@ services:
   privileged: true    #环境变量
 
  redis6:
-  image: redis:5.0.3
+  image: redis
   #network_mode: host
   restart: always
   volumes:
@@ -120,6 +126,7 @@ services:
     - '7006:6379'     #服务端口
     - '17006:16379'   #集群端口
   command: 
+    -- cluster-enabled yes
     -- requirepass "rollinrockz"
     -- masterauth "rollinrockz"
     -- bind 0.0.0.0

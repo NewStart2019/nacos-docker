@@ -1,17 +1,11 @@
 #!/bin/bash
 
 echo "准备阶段……"
-base_dir=/docker/redis
-mkdir -p $base_dir/700{1..6}/data
-mkdir $base_dir/700{1..6}/config
-touch $base_dir/700{1..6}/config/redis.config
-
-cp redis.conf /docker/redis/7001/config
-cp redis.conf /docker/redis/7002/config
-cp redis.conf /docker/redis/7003/config
-cp redis.conf /docker/redis/7004/config
-cp redis.conf /docker/redis/7005/config
-cp redis.conf /docker/redis/7006/config
+base=/docker/redis
+mkdir $base/700{1..6}
+mkdir $base/700{1..6}/data
+mkdir $base/700{1..6}/config
+cp redis.conf /docker/redis/700{1..6}/config/redis.conf
 
 
 echo "创建容器……"
