@@ -1,0 +1,14 @@
+version: '3'
+services:
+    oracle:
+        image: registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
+        container_name: oracle11g
+        privileged: true
+        environment:
+            - TZ=Asia/Shanghai
+        restart: always
+        volumes:
+            - /data/oracle/oradata:/home/oracle/app/oracle/oradata/
+            - /data/oracle/helowin:/home/oracle/app/oracle/flash_recovery_area/helowin/
+        ports:
+            - "1521:1521"
