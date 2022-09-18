@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 services:
     redis:
         image: redis:latest
@@ -14,4 +14,5 @@ services:
             -- protected-mode "no"
         volumes:
             - /data/redis:/data
-#            - /data/redis/redis.conf:/usr/local/etc/redis/redis.conf
+            #- /data/redis/redis.conf:/usr/local/etc/redis/redis.conf
+  # 注意：运行时去掉注释，否则解析不成功

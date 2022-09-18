@@ -13,16 +13,16 @@ services:
       JVM_MS: 80m
       JVM_MMS: 80m
       SPRING_DATASOURCE_PLATFORM: mysql
-      MYSQL_SERVICE_HOST: 124.221.109.245
+      MYSQL_SERVICE_HOST: 8.140.113.225
       # mysql 需要有一个nacos 数据库
-      MYSQL_SERVICE_DB_NAME: nacos_devtest
-      MYSQL_SERVICE_PORT: 3308
-      MYSQL_SERVICE_USER: nacos
-      MYSQL_SERVICE_PASSWORD: nacos
+      MYSQL_SERVICE_DB_NAME: nacos_config
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_USER: root
+      MYSQL_SERVICE_PASSWORD: rollinrockz
     volumes:
       - ./standalone-logs/:/home/nacos/logs
       # 需要提供一个文件
-      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+      - ./custom.properties:/home/nacos/init.d/custom.properties
     ports:
       - "8848:8848"
       - "9848:9848"

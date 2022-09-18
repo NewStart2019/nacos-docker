@@ -1,27 +1,35 @@
 version: '3'
 services:
     oracle:
-        image: registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
-        container_name: oracle11g
+        image: registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle:19c
+        container_name: oracle19c
         privileged: true
         environment:
             - TZ=Asia/Shanghai
-        restart: always
+            - ORACLE_SID=ORCLCDB
+            - ORACLE_PDB=ORCLPDB1
+            - ORACLE_PWD=123456
+            - ORACLE_EDITION=standard
+            - ORACLE_CHARACTERSET=AL32UTF8
+            - ORACLE_BASE=/opt/oracle
+            - ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
+            - PATH=/opt/oracle/product/19c/dbhome_1/bin:/opt/oracle/product/19c/dbhome_1/OPatch/:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
         volumes:
-            - /data/oracle/oradata:/home/oracle/app/oracle/oradata/
-            - /data/oracle/helowin:/home/oracle/app/oracle/flash_recovery_area/helowin/
+            - /data/oracle/oradata:/opt/oracle/oradata
         ports:
             - "1521:1521"
-#配置oracle11：
-# 1、进入容器： docker exec -it oracle11g bash
-# 2、切换到root用户：su root (密码是：helowin)
-# 3、配置环境变量：
-#    export ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/dbhome_2
-#    export ORACLE_SID=helowin
-#    export PATH=$ORACLE_HOME/bin:$PATH
-# 4、加载环境变量：source /home/oracle/.bash_profile、 source /etc/profile
-# 5、配置sys、system用户的账号和密码：
-#       切换到oracle用户：su -oracle
+            - "5502:5500"
+
+    docker run -d  \
+    -p 1521:1521 -p 5500:5500 \
+    -e ORACLE_SID=ORCLCDB \
+    -e ORACLE_PDB=ORCLPDB1 \
+    -e ORACLE_PWD=123456 \
+    -e ORACLE_EDITION=standard \
+    -e ORACLE_CHARACTERSET=AL32UTF8 \
+    -v /data/oracle/oradata:/opt/oracle/oradata \
+    --name orcl19c \
+    registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle:19c
 
 
 
@@ -29,5 +37,15 @@ services:
 
 # docker run --name oracle_11g -d -p 1521:1521 registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
 
-#CREATE TABLESPACE TEST LOGGING DATAFILE '/home/oracle/tablespace/TEST.DBF' SIZE 32M AUTOEXTEND ON NEXT 32M MAXSIZE UNLIMITED EXTENT MANAGEMENT LOCAL;
-#CREATE USER tester IDENTIFIED BY 123456 ACCOUNT UNLOCK DEFAULT TABLESPACE TEST;
+# cd /home/oracle
+# ll
+# mkdir datafile
+# chmod 777 datafile
+# alter session set container=ORCLPDB1;
+# create tablespace mytest datafile '/home/oracle/datafile/datafile1.dbf' size 100m autoextend on next 20m;
+# 注意：oracle19c在cdb中创建公共用户名必须要以c##或者C##开头，如下添加上c##，成功创建用户.
+# 查看当前模式：select sys_context ('USERENV', 'CON_NAME') from dual;  -- CDB$ROOT
+# create user admin identified by 123456 default tablespace mytest;
+# grant dba to admin;
+
+# https://blog.csdn.net/weixin_44231805/article/details/126289535 <<suceess>> 主线要创建两个表空间
